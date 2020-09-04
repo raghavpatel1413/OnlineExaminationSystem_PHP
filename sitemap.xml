@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+  <loc>http://raghavoes.000webhostapp.com/online_examination_system/home.php</loc>
+  <lastmod>2018-04-14T10:56:31+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>http://raghavoes.000webhostapp.com/online_examination_system/admin/admin_login.php</loc>
+  <lastmod>2018-04-14T10:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://raghavoes.000webhostapp.com/online_examination_system/director/director_login.php</loc>
+  <lastmod>2018-04-14T10:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://raghavoes.000webhostapp.com/online_examination_system/faculty/faculty_login.php</loc>
+  <lastmod>2018-04-14T10:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://raghavoes.000webhostapp.com/online_examination_system/student/student_login.php</loc>
+  <lastmod>2018-04-14T10:56:31+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://raghavoes.000webhostapp.com/online_examination_system/admin/forgot_password.php</loc>
+  <lastmod>2018-04-14T10:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://raghavoes.000webhostapp.com/online_examination_system/director/forgot_password.php</loc>
+  <lastmod>2018-04-14T10:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://raghavoes.000webhostapp.com/online_examination_system/faculty/forgot_password.php</loc>
+  <lastmod>2018-04-14T10:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>http://raghavoes.000webhostapp.com/online_examination_system/student/forgot_password.php</loc>
+  <lastmod>2018-04-14T10:56:31+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+</urlset>

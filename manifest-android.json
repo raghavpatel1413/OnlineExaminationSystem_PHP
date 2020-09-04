@@ -1,0 +1,37 @@
+{
+  "name": "Online Examination System",
+  "short_name": "OES",
+  "default_locale": "en",
+  "description": "OES is website that help university to conduct online test",
+  "author": "raghavpatel1413@gmail.com",
+  "icons": [
+    {
+      "src": "globle/icon.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "globle/icon.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "globle/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "index.php",
+  "homepage_url": "home.php",
+  "display": "fullscreen",
+  "background_color": "#007AB5",
+  "orientation": "portrait",
+
+  "permissions": [
+    "tabs",
+    "bookmarks",
+    "http://*.google.com/",
+    "unlimitedStorage"
+  ],
+  "version": "0.1"
+}

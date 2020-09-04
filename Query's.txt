@@ -1,0 +1,104 @@
+drop database online_examination_system;
+
+create database online_examination_system;
+
+use online_examination_system;
+
+create table tbl_admin(admin_name varchar(25),admin_email varchar(50),admin_login_pwd varchar(40),admin_hash varchar(32));
+
+create table tbl_department(department_id int NOT NULL AUTO_INCREMENT,department_name varchar(50),department_details varchar(1000),primary key(department_id));
+
+create table tbl_course(course_id int NOT NULL AUTO_INCREMENT,course_name varchar(50),course_details varchar(500),course_total_sem int,department_id int,primary key(course_id),foreign key(department_id)references tbl_department(department_id));
+
+create table tbl_director(director_id int NOT NULL AUTO_INCREMENT,director_name varchar(50),director_email varchar(50),director_cno bigint,director_address varchar(500),director_gender varchar(6),director_dob date,director_login_pwd varchar(40),director_hash varchar(32),department_id int,primary key(director_id),foreign key(department_id)references tbl_department(department_id));
+
+create table tbl_faculty(faculty_id int NOT NULL AUTO_INCREMENT,faculty_fname varchar(25),faculty_mname varchar(25),faculty_lname varchar(25),faculty_email varchar(50),faculty_cno bigint,faculty_gender varchar(6),faculty_dob date,faculty_address varchar(500),faculty_login_pwd varchar(40),faculty_hash varchar(32),primary key(faculty_id));
+
+create table tbl_sem(sem_id int NOT NULL AUTO_INCREMENT,semester int,sem_year year,primary key(sem_id));
+
+create table tbl_subject(subject_code int,subject_name varchar(50),subject_details varchar(500),total_unit int,course_id int,sem_id int,primary key(subject_code),foreign key(course_id)references tbl_course(course_id),foreign key(sem_id)references tbl_sem(sem_id));
+
+create table tbl_student(student_id int NOT NULL AUTO_INCREMENT,student_enroll_no bigint,student_fname varchar(25),student_mname varchar(25),student_lname varchar(25),student_gender varchar(6),student_dob date,student_email varchar(50),student_address varchar(500),student_login_pwd varchar(40),student_hash varchar(32),primary key(student_id));
+
+create table tbl_student_by_course(student_by_course_id int NOT NULL AUTO_INCREMENT,course_id int,student_id int,sem_id int,student_div varchar(1),primary key(student_by_course_id),foreign key(course_id)references tbl_course(course_id),foreign key(student_id)references tbl_student(student_id),foreign key(sem_id)references tbl_sem(sem_id));
+
+create table tbl_faculty_subject(faculty_by_subject_id int NOT NULL AUTO_INCREMENT,faculty_id int,subject_code int,primary key(faculty_by_subject_id),foreign key(faculty_id)references tbl_faculty(faculty_id),foreign key(subject_code)references tbl_subject(subject_code));
+
+create table tbl_unit(unit_id int NOT NULL AUTO_INCREMENT,unit_index int,unit_name varchar(50),unit_details varchar(500),subject_code int,primary key(unit_id),foreign key(subject_code)references tbl_subject(subject_code));
+
+create table tbl_exam(exam_id int NOT NULL AUTO_INCREMENT,exam_date_create date,exam_date_start date,exam_start_time time,exam_total_time time,exam_total_marks int,exam_passing_marks int,faculty_by_subject_id int,primary key(exam_id),foreign key(faculty_by_subject_id)references tbl_faculty_subject(faculty_by_subject_id));
+
+create table tbl_exam_student(exam_student_id int NOT NULL AUTO_INCREMENT,exam_id int,student_by_course_id int,obtained_marks int,exam_start_time time,exam_end_time time,primary key(exam_student_id),foreign key(exam_id)references tbl_exam(exam_id),foreign key(student_by_course_id)references tbl_student_by_course(student_by_course_id));
+
+create table tbl_question(question_id int auto_increment,question_desc varchar(500),question_level int,question_marks int,question_type int,subject_code int,unit_id int,primary key(question_id),foreign key(subject_code)references tbl_subject(subject_code),foreign key(unit_id)references tbl_unit(unit_id));
+
+create table tbl_option(option_id int auto_increment,option_desc varchar(500),option_correct int,question_id int,primary key(option_id),foreign key(question_id)references tbl_question(question_id));
+
+create table tbl_exam_question(equestion_id int auto_increment,exam_id int,question_id int,primary key(equestion_id),foreign key(exam_id)references tbl_exam(exam_id),foreign key(question_id)references tbl_question(question_id));
+
+create table tbl_equestion_attempted(eqa_id int auto_increment,equestion_id int,option_id int,exam_student_id int,isright int,primary key(eqa_id),foreign key(equestion_id)references tbl_exam_question(equestion_id),foreign key(option_id)references tbl_option(option_id),foreign key(exam_student_id)references tbl_exam_student(exam_student_id));
+
+create table tbl_equestion_inputed(eqi_id int auto_increment,equestion_id int,answer_desc varchar(250),exam_student_id int,isright int,primary key(eqi_id),foreign key(equestion_id)references tbl_exam_question(equestion_id),foreign key(exam_student_id)references tbl_exam_student(exam_student_id));
+
+insert into tbl_admin values("admin","admin@admin.com","af21e6b1f23ee9356b4b0d8addf13e9a59750718","64e1b8d34f425d19e1ee2ea7236d3028");
+
+insert into tbl_sem (semester,sem_year) values(1,2018);
+insert into tbl_sem (semester,sem_year) values(2,2018);
+insert into tbl_sem (semester,sem_year) values(3,2018);
+insert into tbl_sem (semester,sem_year) values(4,2018);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+For Delete Exam
+mysqli_query($con,"delete from tbl_equestion_attempted where equestion_id in (select equestion_id from tbl_exam_question where exam_id=$btn)") or die("Error While delete Query 1");
+
+mysqli_query($con,"delete from tbl_equestion_inputed where equestion_id in (select equestion_id from tbl_exam_question where exam_id=$btn)") or die("Error While delete Query 2");
+
+mysqli_query($con,"delete from tbl_exam_question where exam_id=$btn") or die("Error While delete Query 3");
+
+mysqli_query($con,"delete from tbl_exam_student where exam_id=$btn") or die("Error While delete Query 4");
+
+mysqli_query($con,"delete from tbl_exam where exam_id=$btn") or die("Error While delete Query 5");
+
+
+<!--
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<div id="google_translate_element"></div>-->

@@ -10,7 +10,7 @@
     $mail->Host="smtp.gmail.com";
     $mail->SMTPAuth=true;
     $mail->Username="raghavpatel1413@gmail.com";
-    $mail->Password="Parshottamdas.Manguma.google@1413";
+    $mail->Password="Yes Password was hear.";
     $mail->Port=587;
     $mail->From="raghavpatel1413@gmail.com";
     $mail->FromName="Online Examination System";
